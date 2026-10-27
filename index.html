@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mind Map</title>
+  <meta name="description" content="A first-person exploration of Carl Jung's model of the psyche, built with three.js.">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <canvas id="minimap" width="180" height="180"></canvas>
+    <div id="redbook-badge"><span class="label">Red Book</span> <span id="page-count">0</span> <kbd>J</kbd></div>
+    <div id="realm-banner"><h2 id="realm-name"></h2><p id="realm-desc"></p></div>
+    <div id="crosshair"></div>
+    <div id="prompt"></div>
+    <div id="toast"></div>
+    <div id="stats">
+      <div class="lvl">Consciousness <span id="lvl">1</span></div>
+      <div class="bar hp" title="Composure"><div id="hp-fill"></div><span class="name">Composure</span><span id="hp-text"></span></div>
+      <div class="bar en" title="Libido, Jung's word for psychic energy"><div id="en-fill"></div><span class="name">Libido</span><span id="en-text"></span></div>
+    </div>
+    <div id="xp-bar"><div id="xp-fill"></div><span id="xp-text"></span></div>
+    <div id="damage-vignette"></div>
+    <div id="heal-vignette"></div>
+  </div>
+
+  <div id="dialogue" class="hidden">
+    <div class="speaker" id="dlg-speaker"></div>
+    <div class="text" id="dlg-text"></div>
+    <div class="hint">E / Space / Click to continue</div>
+  </div>
+
+  <div id="journal" class="hidden">
+    <div class="book">
+      <header><h2>Liber Novus</h2><p>The Red Book</p><button id="journal-close" aria-label="Close">×</button></header>
+      <div id="journal-body"></div>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
