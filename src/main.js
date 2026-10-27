@@ -232,7 +232,6 @@ Object.entries(ARCHETYPES).forEach(([id, arch], i) => {
       if (!mono.awake) {
         mono.awake = true;
         mesh.userData.beam.visible = true;
-        mesh.userData.light.intensity = 40;
         mesh.userData.face.emissiveIntensity = 1.2;
         audio.activate();
         particles.burst(mesh.position.clone().setY(5), new THREE.Color(arch.color).getHex(), 30, 7, 1.2);

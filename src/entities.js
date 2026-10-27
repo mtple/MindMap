@@ -558,9 +558,6 @@ export function buildNPC({ robe, glow, mask = false, crown = false, name, nameCo
       g.add(s);
     }
   }
-  const light = new THREE.PointLight(glow, 8, 6, 1.5);
-  light.position.y = 2.2;
-  g.add(light);
   const label = makeLabel(name, nameColor);
   label.position.y = 3.3;
   g.add(label);
@@ -575,8 +572,7 @@ export function buildMemoryOrb() {
   const g = new THREE.Group();
   const orb = new THREE.Mesh(new THREE.SphereGeometry(0.4, 20, 14), new THREE.MeshStandardMaterial({ color: 0xffc0f0, emissive: 0xff70d0, emissiveIntensity: 1.4 }));
   const ring = new THREE.Mesh(new THREE.TorusGeometry(0.7, 0.03, 6, 32), basicMat(0xffd0ff));
-  const light = new THREE.PointLight(0xff80e0, 10, 8, 1.5);
-  g.add(orb, ring, light);
+  g.add(orb, ring);
   g.userData.ring = ring;
   return g;
 }
@@ -614,10 +610,8 @@ export function buildMonolith(symbol, color) {
   );
   beam.position.y = 49;
   beam.visible = false;
-  const light = new THREE.PointLight(color, 0, 18, 1.5);
-  light.position.set(0, 5, 0);
-  g.add(slab, beam, light);
-  g.userData = { face, beam, light };
+  g.add(slab, beam);
+  g.userData = { face, beam };
   return g;
 }
 
@@ -638,8 +632,7 @@ export function buildSymbol(glyph, color) {
   const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, color, transparent: true, depthWrite: false }));
   sprite.scale.set(1.4, 1.4, 1);
   const ring = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.035, 6, 48), basicMat(color));
-  const light = new THREE.PointLight(color, 12, 9, 1.5);
-  g.add(sprite, ring, light);
+  g.add(sprite, ring);
   g.userData.ring = ring;
   return g;
 }
@@ -656,8 +649,7 @@ export function buildScarab() {
   const wl = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.3), wingMat);
   wl.position.set(-0.32, 0.12, 0); wl.rotation.x = -Math.PI / 2;
   const wr = wl.clone(); wr.position.x = 0.32;
-  const light = new THREE.PointLight(0xffc040, 8, 7, 1.5);
-  g.add(shell, head, wl, wr, light);
+  g.add(shell, head, wl, wr);
   g.userData.wings = [wl, wr];
   return g;
 }
